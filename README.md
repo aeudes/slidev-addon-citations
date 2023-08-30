@@ -1,7 +1,7 @@
 ### slidev-addon-citations   
 
 Add bibliography and citation features for Slidev
-PowerBy <img alt="Citation.js" src="https://citation.js.org/favicon.png" />[citation-js](https://citation.js.org)
+PowerBy <img alt="Citation.js" src="https://citation.js.org/favicon.png"  width="25" height="25" />[citation-js](https://citation.js.org)
 
 
 The addon allows Json and Bibtex input bibliography by default.
@@ -32,7 +32,7 @@ biblio:
 The input files **foo.bib** and **bar.json** will be read into the "public/biblio" folder of the presentation
 
 # Usage   
-Reference could be cite by to way.
+References could be cite in two ways.
 
 Using the Cite component:
 ```
