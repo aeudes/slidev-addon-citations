@@ -1,0 +1,385 @@
+[
+{
+    "author": [
+      {
+        "given": "E",
+        "family": "Prochazkova"
+      },
+      {
+        "given": "E",
+        "family": "Sjak-Shie"
+      },
+      {
+        "given": "F",
+        "family": "Behrens"
+      },
+      {
+        "given": "D",
+        "family": "Lindh"
+      },
+      {
+        "given": "ME",
+        "family": "Kret"
+      }
+    ],
+    "container-title": "Nature Human Behaviour",
+    "id": "IG2022CARDIOLOGY-json",
+    "citation-label": "IG2022CARDIOLOGY",
+    "issue": 2,
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "page": "269-278",
+    "publisher": "Nature Publishing Group UK London",
+    "title": "Physiological synchrony is associated with attraction in a blind date setting",
+    "type": "article-journal",
+    "volume": 6
+  }
+,
+ {
+    "author": [
+      {
+        "given": "Eric",
+        "family": "Martínez"
+      },
+      {
+        "given": "Francis",
+        "family": "Mollica"
+      },
+      {
+        "given": "Edward",
+        "family": "Gibson"
+      }
+    ],
+    "container-title": "Cognition",
+    "id": "IG2022LITERATURE",
+    "citation-label": "IG2022LITERATURE",
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "page": "105070",
+    "title": "Poor writing, not specialized concepts, drives processing difficulty in legal language",
+    "type": "article-journal",
+    "volume": 224
+  }
+,
+  {
+    "author": [
+      {
+        "given": "Solimary",
+        "family": "GARCÍA-HERNÁNDEZ"
+      },
+      {
+        "given": "Glauco",
+        "family": "MACHADO"
+      }
+    ],
+    "container-title": "Integrative Zoology",
+    "id": "IG2022BIOLOGY-json",
+    "DOI": "10.1111/1749-4877.12604",
+    "issue": 5,
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "page": "672-688",
+    "title": "Short- and long-term effects of an extreme case of autotomy: does “tail” loss and subsequent constipation decrease the locomotor performance of male and female scorpions?",
+    "type": "article-journal",
+    "volume": 17
+  }
+,
+  {
+    "author": [
+      {
+        "given": "Marcin",
+        "family": "Jasiński"
+      },
+      {
+        "given": "Martyna",
+        "family": "Maciejewska"
+      },
+      {
+        "given": "Anna",
+        "family": "Brodziak"
+      },
+      {
+        "given": "Michał",
+        "family": "Górka"
+      },
+      {
+        "given": "Kamila",
+        "family": "Skwierawska"
+      },
+      {
+        "given": "Wiesław W",
+        "family": "Jędrzejczak"
+      },
+      {
+        "given": "Agnieszka",
+        "family": "Tomaszewska"
+      },
+      {
+        "given": "Grzegorz W",
+        "family": "Basak"
+      },
+      {
+        "given": "Emilian",
+        "family": "Snarski"
+      }
+    ],
+    "container-title": "Scientific Reports",
+    "id": "IG2022MEDICINE-json",
+    "DOI": "10.1038/s41598-021-02002-x",
+    "issue": 1,
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "page": "22507",
+    "publisher": "Nature Publishing Group UK London",
+    "title": "Ice-cream used as cryotherapy during high-dose melphalan conditioning reduces oral mucositis after autologous hematopoietic stem cell transplantation",
+    "type": "article-journal",
+    "volume": 11
+  }
+,
+  {
+    "author": [
+      {
+        "given": "Peter A.G.M.",
+        "family": "de Smet"
+      },
+      {
+        "given": "Nicholas M.",
+        "family": "Hellmuth"
+      }
+    ],
+    "container-title": "Journal of Ethnopharmacology",
+    "id": "IG2022ARTHISTORY-json",
+    "DOI": "10.1016/0378-8741(86)90091-7",
+    "issue": 2,
+    "issued": {
+      "date-parts": [
+        [
+          1986
+        ]
+      ]
+    },
+    "page": "213-262",
+    "title": "A multidisciplinary approach to ritual enema scenes on ancient Maya pottery",
+    "type": "article-journal",
+    "volume": 16
+  }
+,
+  {
+    "author": [
+      {
+        "given": "Zhi-Ming",
+        "family": "Yuan"
+      },
+      {
+        "given": "Minglu",
+        "family": "Chen"
+      },
+      {
+        "given": "Laibing",
+        "family": "Jia"
+      },
+      {
+        "given": "Chunyan",
+        "family": "Ji"
+      },
+      {
+        "given": "Atilla",
+        "family": "Incecik"
+      }
+    ],
+    "container-title": "Journal of Fluid Mechanics",
+    "id": "IG2022PHYSICS-json",
+    "citation-label": "10.1017/jfm.2021.820",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "page": "R2",
+    "publisher": "Cambridge University Press",
+    "title": "Wave-riding and wave-passing by ducklings in formation swimming",
+    "type": "article-journal",
+    "volume": 928
+  }
+,
+  {
+    "author": [
+      {
+        "given": "Junhui",
+        "family": "Wu"
+      },
+      {
+        "given": "Szabolcs",
+        "family": "Számadó"
+      },
+      {
+        "given": "Pat",
+        "family": "Barclay"
+      },
+      {
+        "given": "Bianca",
+        "family": "Beersma"
+      },
+      {
+        "given": "Terence D.",
+        "family": "Dores Cruz"
+      },
+      {
+        "given": "Sergio Lo",
+        "family": "Iacono"
+      },
+      {
+        "given": "Annika S.",
+        "family": "Nieper"
+      },
+      {
+        "given": "Kim",
+        "family": "Peters"
+      },
+      {
+        "given": "Wojtek",
+        "family": "Przepiorka"
+      },
+      {
+        "given": "Leo",
+        "family": "Tiokhin"
+      },
+      {
+        "given": "Paul A. M. ",
+        "family": "Van Lange"
+      }
+    ],
+    "container-title": "Philosophical Transactions of the Royal Society B: Biological Sciences",
+    "id": "IG2022PEACE-json",
+    "DOI": "doi:10.1098/rstb.2020.0300",
+    "issue": 1838,
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "page": "20200300",
+    "title": "Honesty and dishonesty in gossip strategies: a fitness interdependence analysis",
+    "type": "article-journal",
+    "volume": 376
+  }
+,
+  {
+    "author": [
+      {
+        "given": "ALESSANDRO",
+        "family": "PLUCHINO"
+      },
+      {
+        "given": "ALESSIO EMANUELE",
+        "family": "BIONDO"
+      },
+      {
+        "given": "ANDREA",
+        "family": "RAPISARDA"
+      }
+    ],
+    "container-title": "Advances in Complex Systems",
+    "id": "IG2022ECONOMICS-json",
+    "DOI": "doi:10.1142/S0219525918500145",
+    "issue": "03n04",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "page": "1850014",
+    "title": "TALENT VERSUS LUCK: THE ROLE OF RANDOMNESS IN SUCCESS AND FAILURE",
+    "type": "article-journal",
+    "volume": 21
+  }
+,
+  {
+    "author": [
+      {
+        "given": "Magnus",
+        "family": "Gens"
+      }
+    ],
+    "collection-title": "VTI särtryck",
+    "id": "IG2022SAFETY-json",
+    "citation-label": "IG2022SAFETY",
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "number": 342,
+    "publisher": "Statens väg- och transportforskningsinstitut",
+    "title": "Moose crash test dummy : master's thesis",
+    "type": "report"
+  }
+,
+  {
+    "author": [
+      {
+        "given": "Gen",
+        "family": "Matsuzaki"
+      },
+      {
+        "given": "Kazuo",
+        "family": "Ohuchi"
+      },
+      {
+        "given": "Masaru",
+        "family": "Uehara"
+      },
+      {
+        "given": "Yoshiyuki",
+        "family": "Ueno"
+      },
+      {
+        "given": "Goro",
+        "family": "Imura"
+      }
+    ],
+    "container-title": "Bulletin of Japanese Society for the Science of Design",
+    "id": "IG2022ENGINEERING-json",
+    "DOI": "10.11247/jssdj.45.69",
+    "issue": 5,
+    "issued": {
+      "date-parts": [
+        [
+          1999
+        ]
+      ]
+    },
+    "page": "69-76",
+    "title": "How to Use Fingers during Rotary Control of Columnar Knobs",
+    "type": "article-journal",
+    "volume": 45
+  }
+]

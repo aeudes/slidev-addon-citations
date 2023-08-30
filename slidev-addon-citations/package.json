@@ -1,0 +1,27 @@
+{
+  "name": "slidev-addon-citations",
+  "version": "0.0.2",
+  "description": "add citations and biliography to slidev using citation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aeudes/slidev-citations-addon"
+  },
+  "keywords": [
+    "slidev",
+    "slidev-addon",
+    "citation-js"
+  ],
+  "author": "Alexandre Eudes",
+  "license": "ISC",
+  "devDependencies": {
+    "@slidev/cli": "^0.42.11"
+  },
+  "dependencies": {
+    "@citation-js/core": "^0.6.8",
+    "@citation-js/plugin-bibtex": "^0.6.8",
+    "@citation-js/plugin-csl": "^0.6.8"
+  }
+}
