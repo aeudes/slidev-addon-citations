@@ -21,7 +21,7 @@ const footpage_bib = ref("")
 const biblio = ref([])
 
 let bibSlideConfig = {... citation_state.default_config, ... sliconfig?.biblio, ...frontmatter?.biblio}
-const show_tooltips = bibSlideConfig.tooltips
+const show_tooltips = ref(bibSlideConfig.tooltips)
 const footpage_bibtype = get_footpage_type()
 const maxItem = props.itemPerPage ?? bibSlideConfig.item_per_page
 const fullBib = props.showFullBib || bibSlideConfig.show_full_bib
@@ -57,8 +57,19 @@ function update_bib()
 
   if (props.bref != null) {
     const my_bib_data = citation_state.get(props.bref)
-    refnum.value =  my_bib_data?.cite_id
-    reftext.value = my_bib_data?.full_bib
+    const ref_error = !("cite_id" in my_bib_data)
+   
+    if (ref_error)
+    {
+      refnum.value =  "(#RefErr)"
+      reftext.value = props.bref + ": ERROR ref not found"
+      show_tooltips.value = true
+    }
+    else
+    {
+      refnum.value =  my_bib_data.cite_id
+      reftext.value = my_bib_data.full_bib
+    }
   
     let idx_id = citation_state.get_allbibinpage(my_page)
     if (Math.min(...idx_id[0]) === my_bib_data.idx)
