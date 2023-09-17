@@ -45,7 +45,7 @@ Or using directly the markdown pre-processor
 
 The bibliography list could be display with:
 ```
-<Cite show-bib />
+<BiblioList />
 ```
 or using the layout
 ```

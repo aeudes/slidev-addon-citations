@@ -10,7 +10,7 @@ const props = defineProps({
            <slot>
 	   <h1 class="text-center" >Biblography</h1>
 	   </slot>
-	   <Cite show-bib />
+	   <BiblioList />
 	</div>
 </template>
 
