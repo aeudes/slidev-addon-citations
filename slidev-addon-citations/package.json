@@ -1,16 +1,22 @@
 {
   "name": "slidev-addon-citations",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "add citations and biliography to slidev using citation.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "slidev example.md",
+    "build": "slidev build example.md",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
   },
   "engines": {
-   "slidev": ">0.42.11" 
+    "slidev": ">0.42.11"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aeudes/slidev-citations-addon.git"
+    "url": "git+https://github.com/aeudes/slidev-addon-citations.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aeudes/slidev-addon-citations/issues"
   },
   "keywords": [
     "slidev",
@@ -20,14 +26,17 @@
   "author": "aeudes-dev",
   "license": "MIT",
   "devDependencies": {
-    "@slidev/cli": ">=0.42.11"
+    "@iconify-json/mingcute": "^1.1.9",
+    "@slidev/cli": ">=0.42.11",
+    "playwright-chromium": "^1.38.0",
+    "@slidev/theme-seriph": "^0.21.3"
   },
   "dependencies": {
-    "@slidev/cli": ">=0.42.11",
-    "vite": ">=4.4.0",
     "@citation-js/core": ">=0.6.8",
     "@citation-js/plugin-bibtex": ">=0.6.8",
-    "@citation-js/plugin-csl": ">=0.6.8"
+    "@citation-js/plugin-csl": ">=0.6.8",
+    "@slidev/cli": ">=0.42.11",
+    "vite": ">=4.4.0"
   },
-  "type" : "module"
+  "type": "module"
 }

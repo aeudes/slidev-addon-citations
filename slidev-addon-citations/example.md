@@ -7,8 +7,8 @@ monaco: true
 info: |
   ## Bibliography addon for slidev
   Powered by [citation-js](https://citation.js.org)
-addons:
-  - slidev-addon-citations
+#addons:
+#  - slidev-addon-citations
 biblio:
  filename:
    - ig2022.bib
