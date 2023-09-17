@@ -1,6 +1,6 @@
 {
-  "name": "@aeudes-dev/slidev-addon-citations",
-  "version": "0.0.3",
+  "name": "slidev-addon-citations",
+  "version": "0.0.4",
   "description": "add citations and biliography to slidev using citation.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
