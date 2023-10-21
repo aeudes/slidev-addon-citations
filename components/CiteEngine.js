@@ -18,7 +18,9 @@ export const citation_state =
       footnotes: 'none',
       item_per_page: undefined,
       show_full_bib: false,
-      show_id: undefined
+      show_id: undefined,
+      csl_template_file: undefined,
+      csl_locales_file: undefined
    },
    state: {
     cite: undefined,
@@ -49,7 +51,37 @@ export const citation_state =
          this.state.is_init = true
          console.log('init')
          console.log("citation-js parser loaded:", plugins.list())
-           
+
+         if (this.state.config.csl_template_file)
+         {
+           fetch("biblio/"+this.state.config.csl_template_file)
+          .then( r=> {if (r.ok) {return r.json() } })
+          .then( t =>{ 
+            let config = plugins.config.get('@csl')
+            Object.entries(t).map( ([templateName, template]) => {
+
+              config.templates.add(templateName, template)
+              console.log("load template: " + templateName)
+              }
+            )})
+          .catch(e => {console.error("invalid template file biblio/"+ this.state.config.csl_template_file +":"+e)})
+         }
+
+         if (this.state.config.csl_locales_file)
+         {
+           fetch("biblio/"+this.state.config.csl_locales_file)
+          .then( r=> {if (r.ok) {return r.text() } })
+          .then( t =>{ 
+            let config = plugins.config.get('@csl')
+            for (const [langName,lang] in Object.entries(t)) {
+              config.locales.add(langName, lang)
+            }
+            } )
+          .catch(e => {console.error("invalid locales file biblio/"+ this.state.config.csl_locales_file +":"+e)})
+         }
+
+
+
          let filenames = []
       	 if (Array.isArray(config.filename)) {
 	         filenames = config.filename

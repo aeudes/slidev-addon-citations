@@ -15,8 +15,11 @@ biblio:
    - ig2022.json
  footnotes: false
  #template: vancouver
- #template: apa
- template: harvard1
+ template: apa
+ #template: harvard1
+ #csl_template_file: style.json
+ #template: ieee
+ #numerical_ref: false
 ---
 
 # Bibliography addon for slidev

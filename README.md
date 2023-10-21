@@ -110,7 +110,18 @@ biblio:
 - *footnotes*: provide addition reference list as footnote on the slide.   
 This parameter is disable if set to 'none' or false, provide a short reference with 'short' or complete one with 'full'.
 
-# Extension (WIP)   
+
+# Extension 
+## import additional template style and locales
+```
+biblio:
+  - csl_template_file: style.json
+  - csl_locale_file: locale.json 
+```
+*csl_template_file* and *csl_locale_file* allow to extend format and local with custom csl file loaded from the bilio forlder (see citeproc for more information).    
+note: A bug prevent to use of independant parent style at the moment. 
+
+## extend citation-js directly (WIP)
 The underline citation-js could customize to add other input type or format via load plugin or customize citation-js/plugin-csl format output.
 
 Example:  
@@ -145,7 +156,7 @@ export default defineAppSetup(({ app, router }) => {
 - [ ] add link between ref&biblio (with comes back link)
 - [ ] add/impove css&rendering
 - [ ] change from preparser to parser to avoid problem with online editor
-- [ ] provide entry point to load custom csl format without need to write extension
+- [x] provide entry point to load custom csl format without need to write extension
 - [ ] allows to download the bibliography
 
 
