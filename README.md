@@ -8,7 +8,7 @@ The addon allows Json and Bibtex input bibliography by default.
 An example is provided in this repository (see citations-addon-exemple.md)
 
 # Install   
-You only need to add "slidev-addon-citations" in the addon section of the frontmatter of your presentation
+You only need to add "slidev-addon-citations" in the addon section of the frontmatter of your presentation and ```npm install slidev-addon-citations``` to your project.
 
 ```
 addons:
@@ -32,8 +32,8 @@ biblio:
 The input files **foo.bib** and **bar.json** will be read into the "public/biblio" folder of the presentation
 
 # Usage   
-## standard
-References could be cite in two ways.
+## Standard
+References could be cited in two ways.
 
 Using the Cite component:
 ```
@@ -57,22 +57,22 @@ layout: biblio
 
 ## Advanced
 The input field allow to provided reference definition directly to citation-js without using a file.
-It's design to load reference from doi,isbn,... **(only the doi plugin is loaded by default)**
+It's design to load reference from identifier *(only the citation-js doi plugin is loaded by default)*
 
 ```
 <Cite input="10.1142/S0219525918500145" />   
 <Cite input="10.1142/S0219525918500145" bref="myid" />
 ```
-The **bref** field is used to specify the referenced id of the input field and to cite this element again in the slide deck.
+The *bref* field is used to specify the referenced id of the input field and to cite this element again in the slide deck.
 
 
 # Style & configuration   
 Additional options are provided by the addon for formatting the bibliography:
-those customization of the bibliography could be setup globally (in first slide) or localy(in frontmatter of one slide) for only one slide bibliography list.
+those customization of the bibliography could be setup globally (in first slide) or localy (in frontmatter of one slide) for only one slide bibliography list.
 
 ## bibliography formatting
 It is possible to configure the output format provided by citation-js and under the hood citeproc
-passing the locale and template format for bibliography (apa,harvard1,vancouver).
+by passing the locale and template format for bibliography (apa,harvard1,vancouver) in the frontmatter of the first slide.
 
 ```
 biblio:
@@ -84,7 +84,7 @@ biblio:
 ```
 *numerical_ref* could be used to force the reference to be a numeric reference.
 
-
+Additional property could be used to format the bibliography
 ```
 biblio:
   - item_per_page: 2
@@ -100,7 +100,6 @@ Some CSS tag are introduced to customize the display of bibliography list
 
 ## Reference formatting
 
-Those customization of the reference formatting could be setup globally (in first slide) or localy(in frontmatter of one slide) for only one slide bibliography list.
 ```
 biblio:
 - tooltips: true
@@ -112,7 +111,7 @@ This parameter is disable if set to 'none' or false, provide a short reference w
 
 
 # Extension 
-## import additional template style and locales
+## Import additional template style and locales
 ```
 biblio:
   - csl_template_file: style.json
@@ -121,7 +120,7 @@ biblio:
 *csl_template_file* and *csl_locale_file* allow to extend format and local with custom csl file loaded from the bilio forlder (see citeproc for more information).    
 note: A bug prevent to use of independant parent style at the moment. 
 
-## extend citation-js directly (WIP)
+## Extend citation-js directly (WIP)
 The underline citation-js could customize to add other input type or format via load plugin or customize citation-js/plugin-csl format output.
 
 Example:  
