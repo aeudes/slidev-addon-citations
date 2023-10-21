@@ -94,4 +94,8 @@ citation_state.init().then( (cite) =>
   opacity: 0.5;
   white-space: nowrap;
 }
+.biblio_fullref
+{
+  text-wrap: wrap;
+}
 </style>

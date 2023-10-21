@@ -28,8 +28,8 @@
   "devDependencies": {
     "@iconify-json/mingcute": "^1.1.9",
     "@slidev/cli": ">=0.42.11",
-    "playwright-chromium": "^1.38.0",
-    "@slidev/theme-seriph": "^0.21.3"
+    "@slidev/theme-seriph": "^0.21.3",
+    "playwright-chromium": "^1.38.0"
   },
   "dependencies": {
     "@citation-js/core": ">=0.6.8",

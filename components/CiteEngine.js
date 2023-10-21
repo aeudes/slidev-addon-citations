@@ -151,7 +151,7 @@ export const citation_state =
     {
       const bib = mbiblios[id]
       let x = this.state.cite.data[v] //bib_id_order[id]]
-      const etal = (x.author.length >1 )? "" : " et al."
+      const etal = (x.author.length <= 1 )? "" : " et al."
       const short_bib = x.author[0].given[0] + ". " + x.author[0].family + etal +" , " + x.title
       
       if (i < nknow)
