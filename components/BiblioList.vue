@@ -51,7 +51,7 @@ if (fullBib) {citation_state.process_all();}
 citation_state.init().then( (cite) => 
 {
   update_bib()
-  console.log("bib:", my_page, "full:",fullBib, "proc:", citation_state.state.process_all)
+  //console.log("bib:", my_page, "full:",fullBib, "proc:", citation_state.state.process_all)
 })
 </script>
 
