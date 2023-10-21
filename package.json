@@ -35,6 +35,7 @@
     "@citation-js/core": ">=0.6.8",
     "@citation-js/plugin-bibtex": ">=0.6.8",
     "@citation-js/plugin-csl": ">=0.6.8",
+    "@citation-js/plugin-doi": ">=0.6.8",
     "@slidev/cli": ">=0.42.11",
     "vite": ">=4.4.0"
   },

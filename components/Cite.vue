@@ -6,6 +6,7 @@ import {injectionRoute } from "@slidev/client/constants.ts"
 
 const props = defineProps({
    bref:{type: String, default: null},
+   input:{type: String, default: null},
 });
 
 const slidevRoute = inject(injectionRoute)
@@ -20,6 +21,7 @@ let bibSlideConfig = {... citation_state.default_config, ... sliconfig?.biblio, 
 const show_tooltips = ref(bibSlideConfig.tooltips)
 const footpage_bibtype = get_footpage_type()
 
+let myid = citation_state.add(props.bref, my_page, props.input)
 function get_footpage_type()
 {
   let foottype = bibSlideConfig.footnotes //ref("none")
@@ -33,8 +35,8 @@ function update_bib()
   if (!citation_state.state.is_init || !citation_state.state.cite)
    return
 
-  if (props.bref != null) {
-    const my_bib_data = citation_state.get(props.bref)
+  if (myid != null) {
+    const my_bib_data = citation_state.get(myid)
     const ref_error = !("cite_id" in my_bib_data)
    
     if (ref_error)
@@ -52,7 +54,7 @@ function update_bib()
     let idx_id = citation_state.get_allbibinpage(my_page)
     if (Math.min(...idx_id[0]) === my_bib_data.idx)
     {
-      footpage_bib.value = idx_id[1].map( v => citation_state.get(v)) 
+      footpage_bib.value = idx_id[1].map( v => citation_state.get(v)).filter( v => v?.id )
     }
   }
 }
@@ -63,7 +65,6 @@ watch( citation_state.state.version, (version,old_version) => {
     }
 )
 
-citation_state.add(props.bref, my_page)
 
 citation_state.init().then( (cite) => 
 {

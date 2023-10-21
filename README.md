@@ -32,6 +32,7 @@ biblio:
 The input files **foo.bib** and **bar.json** will be read into the "public/biblio" folder of the presentation
 
 # Usage   
+## standard
 References could be cite in two ways.
 
 Using the Cite component:
@@ -54,8 +55,21 @@ layout: biblio
 ---
 ```
 
+## Advanced
+The input field allow to provided reference definition directly to citation-js without using a file.
+It's design to load reference from doi,isbn,... **(only the doi plugin is loaded by default)**
+
+```
+<Cite input="10.1142/S0219525918500145" />   
+<Cite input="10.1142/S0219525918500145" bref="myid" />
+```
+The **bref** field is used to specify the referenced id of the input field and to cite this element again in the slide deck.
+
 
 # Style & configuration   
+Additional options are provided by the addon for formatting the bibliography:
+those customization of the bibliography could be setup globally (in first slide) or localy(in frontmatter of one slide) for only one slide bibliography list.
+
 ## bibliography formatting
 It is possible to configure the output format provided by citation-js and under the hood citeproc
 passing the locale and template format for bibliography (apa,harvard1,vancouver).
@@ -70,8 +84,6 @@ biblio:
 ```
 *numerical_ref* could be used to force the reference to be a numeric reference.
 
-Additional options are provided by the addon for formatting the bibliography:
-those customization of the bibliography could be setup globally (in first slide) or localy(in frontmatter of one slide) for only one slide bibliography list.
 
 ```
 biblio:
@@ -128,11 +140,12 @@ export default defineAppSetup(({ app, router }) => {
 
 # TODO list & know issues
 - [ ] Improve documentation
-- [ ] Fix temporaries id not repeatable on load (from doi,wiki...)
+- [x] Fix temporaries id not repeatable on load (from doi,wiki...)
 - [ ] Allow to separate biblio by section (using toc)
-- [ ] add link between ref&biblio (with comes back to easy)
+- [ ] add link between ref&biblio (with comes back link)
 - [ ] add/impove css&rendering
 - [ ] change from preparser to parser to avoid problem with online editor
 - [ ] provide entry point to load custom csl format without need to write extension
+- [ ] allows to download the bibliography
 
 

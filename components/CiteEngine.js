@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import {Cite as Citejs,plugins}  from "@citation-js/core"
 import "@citation-js/plugin-bibtex"
 import "@citation-js/plugin-csl"
-//import "@citation-js/plugin-doi"
+import "@citation-js/plugin-doi"
 import sliconfig from "/@slidev/configs"
 
 
@@ -23,11 +23,23 @@ export const citation_state =
    state: {
     cite: undefined,
     nitem: 1,
+    uref_item: [],
     is_init: false,
     bibprop: {},
     version: ref(0),
     config: {},
     process_all: false,
+  },
+  getURefItem(input)
+  {
+    const idx = this.state.uref_item.indexOf(input)
+    if (idx != -1)
+    {
+       return idx +1 // first id == 1
+    } else {
+      this.state.uref_item.push(input)
+      return this.state.uref_item.length
+    }
   },
   init() {
        const config = sliconfig?.biblio 
@@ -47,7 +59,6 @@ export const citation_state =
 	       }
 	       const load_func = f => {console.log("biblio load : ",f); return fetch("/biblio/"+f+"?raw")
                 .then(r => { if( ! r.ok) { throw new Error("invalid file"+f);  } else { return r.text()} })
-	              .catch( err => { return f } )
 		            .then( t => this.add_ref(t))
 	              .catch( err => {console.log(err); return Promise.resolve(this.state.cite) } )
 	       }
@@ -56,6 +67,20 @@ export const citation_state =
        } else{
          return  Promise.resolve( this.state.cite  )  
        }
+  },
+  add_input(input, id){
+    console.log("add_input",input)
+    if (!this.state.cite)
+      this.state.cite = Citejs()
+    
+    let csl = plugins.input.chainAsync(input)
+      .then(csl => {
+        csl[0]["id"] = id //= id ?? csl[0get]?.id ?? ("id_u" + this.getURefItem())
+        this.add_ref(csl)
+    })
+    .catch(err => {console.log("error : ",input,"invalid")})
+    //this.state.cite.data.push(...csl)
+    //return id
   },
   add_ref(input){
     //console.log("add_ref",input)
@@ -116,11 +141,21 @@ export const citation_state =
       }
     })
   },
-  add(id, page){
+  add(id, page, input){
+   if (id == null) {
+     if (input != null)
+     {
+      id = "Tid" + this.getURefItem(input)
+     }
+    else{return null}
+   }
+   
    if (!(id in this.state.bibprop))
    {
     this.state.bibprop[id] = {"pages": [], "idx": this.state.nitem}
     this.state.nitem += 1
+    if (input != null)
+      this.add_input(input, id)
     this.update_full_bib() // TODO only update id
    }
 
@@ -128,6 +163,7 @@ export const citation_state =
    {
      this.state.bibprop[id].pages.push(page)
    }
+   return id
   },
   process_all()
   {
