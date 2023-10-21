@@ -15,10 +15,10 @@ biblio:
    - ig2022.json
  footnotes: false
  #template: vancouver
- template: apa
+ #template: apa
  #template: harvard1
- #csl_template_file: style.json
- #template: ieee
+ csl_template_file: style.json
+ template: ieee
  #numerical_ref: false
 ---
 
@@ -79,7 +79,7 @@ to tooltips or not tooltips...
 
 Display biblio reference on mouse over : **Economics** [@IG2022ECONOMICS]
 
-this slides have also full reference in footnotes (and it's ugly)
+this slides have also full reference in footnotes (and it's too long)
 
 ---
 ---
