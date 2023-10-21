@@ -89,7 +89,7 @@ export const citation_state =
 	       else{
 	         filenames = [config.filename]
 	       }
-	       const load_func = f => {console.log("biblio load : ",f); return fetch("/biblio/"+f+"?raw")
+	       const load_func = f => {console.log("biblio load : ",f); return fetch("biblio/"+f+"?raw")
                 .then(r => { if( ! r.ok) { throw new Error("invalid file"+f);  } else { return r.text()} })
 		            .then( t => this.add_ref(t))
 	              .catch( err => {console.log(err); return Promise.resolve(this.state.cite) } )
