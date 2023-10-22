@@ -61,8 +61,7 @@ function update_bib()
     if (Math.min(...idx_id[0]) === my_bib_data.idx)
     {
       footpage_bib.value = idx_id[1].map( v => citation_state.get(v)).filter( v => v?.id )
-    }
-  }
+    }  
 }
 
 watch( citation_state.state.version, (version,old_version) => {
