@@ -18,7 +18,7 @@ const biblio = ref([])
 let bibSlideConfig = {... citation_state.default_config, ... sliconfig?.biblio, ...frontmatter?.biblio}
 const maxItem = props.itemPerPage ?? bibSlideConfig.item_per_page
 const fullBib = props.showFullBib || bibSlideConfig.show_full_bib
-const showid  = bibSlideConfig.show_id || fullBib && (bibSlideConfig.show_id ?? true)
+const showid  = bibSlideConfig.show_id || (fullBib || bibSlideConfig.numerical_ref) && (bibSlideConfig.show_id ?? true) 
 
 function update_bib() 
 {
