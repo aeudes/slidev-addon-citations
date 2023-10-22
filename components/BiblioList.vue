@@ -22,7 +22,7 @@ const showid  = bibSlideConfig.show_id || fullBib && (bibSlideConfig.show_id ?? 
 
 function update_bib() 
 {
-  if (!citation_state.state.is_init || !citation_state.state.cite)
+  if (!citation_state.state.is_init)
    return
 
     const show_entry = fullBib? citation_state.get_all_ids(): citation_state.get_know_ids()

@@ -32,8 +32,8 @@ function get_footpage_type()
 
 function update_bib() 
 {
-  if (!citation_state.state.is_init || !citation_state.state.cite)
-   return
+    if (!citation_state.state.is_init)
+      return
 
   if (myid != null) {
     const my_bib_data = citation_state.get(myid)

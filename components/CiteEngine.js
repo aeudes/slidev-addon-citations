@@ -27,6 +27,7 @@ export const citation_state =
     nitem: 1,
     uref_item: [],
     is_init: false,
+    init_start: false,
     bibprop: {},
     version: ref(0),
     config: {},
@@ -44,27 +45,32 @@ export const citation_state =
     }
   },
   init() {
-       const config = sliconfig?.biblio 
-       this.state.config = { ... this.default_config , ...config}
+         if (this.state.init_start) 
+           return  Promise.resolve( this.state.cite  )  
+         
+         this.state.init_start = true
+
+         const config = sliconfig?.biblio 
+         this.state.config = { ... this.default_config , ...config}
        
-       if (!this.state.is_init) {
-         this.state.is_init = true
          console.log('init')
          console.log("citation-js parser loaded:", plugins.list())
 
          if (this.state.config.csl_template_file)
          {
            fetch("biblio/"+this.state.config.csl_template_file)
-          .then( r=> {if (r.ok) {return r.json() } })
-          .then( t =>{ 
-            let config = plugins.config.get('@csl')
-            Object.entries(t).map( ([templateName, template]) => {
+           .then( r=> {if (r.ok) {return r.json() } })
+           .then( t =>{ 
+             let config = plugins.config.get('@csl')
+             Object.entries(t).map( ([templateName, template]) => {
 
               config.templates.add(templateName, template)
               console.log("load template: " + templateName)
               }
-            )})
-          .catch(e => {console.error("invalid template file biblio/"+ this.state.config.csl_template_file +":"+e)})
+             )
+             this.update_full_bib()
+           })
+           .catch(e => {console.error("invalid template file biblio/"+ this.state.config.csl_template_file +":"+e)})
          }
 
          if (this.state.config.csl_locales_file)
@@ -76,7 +82,8 @@ export const citation_state =
             for (const [langName,lang] in Object.entries(t)) {
               config.locales.add(langName, lang)
             }
-            } )
+            this.update_full_bib()
+          })
           .catch(e => {console.error("invalid locales file biblio/"+ this.state.config.csl_locales_file +":"+e)})
          }
 
@@ -89,40 +96,37 @@ export const citation_state =
 	       else{
 	         filenames = [config.filename]
 	       }
+
 	       const load_func = f => {console.log("biblio load : ",f); return fetch("biblio/"+f+"?raw")
                 .then(r => { if( ! r.ok) { throw new Error("invalid file"+f);  } else { return r.text()} })
 		            .then( t => this.add_ref(t))
 	              .catch( err => {console.log(err); return Promise.resolve(this.state.cite) } )
 	       }
 	       return Promise.all(filenames.map(load_func))
-                       .then( () => this.state.cite)
-       } else{
-         return  Promise.resolve( this.state.cite  )  
-       }
+             .then( () => { 
+               this.state.is_init = true
+               console.log("init done")
+               this.update_full_bib()
+               return this.state.cite
+             })
   },
   add_input(input, id){
-    console.log("add_input",input)
-    if (!this.state.cite)
-      this.state.cite = Citejs()
-    
-    let csl = plugins.input.chainAsync(input)
+    //console.log("add_input",input)
+    plugins.input.chainAsync(input)
       .then(csl => {
-        csl[0]["id"] = id //= id ?? csl[0get]?.id ?? ("id_u" + this.getURefItem())
+        csl[0]["id"] = id
         this.add_ref(csl)
+        this.update_full_bib()
+        //console.log("end add input",input)
     })
     .catch(err => {console.log("error : ",input,"invalid")})
-    //this.state.cite.data.push(...csl)
-    //return id
   },
   add_ref(input){
-    //console.log("add_ref",input)
+    //console.log("add_ref")
     if (this.state.cite)
       this.state.cite = this.state.cite.add(input)
     else
       this.state.cite = Citejs(input)
-    this.update_full_bib()
-    this.state.version.value += 1
-    return this.state.cite
   },
   update_full_bib(){
     if (!this.state.cite)
@@ -180,6 +184,8 @@ export const citation_state =
         this.state.bib_other[id] = {'full_bib': bib, 'short_bib': short_bib , 'cite_id': '['+id+']', 'id': id }
       }
     })
+    if (this.state.is_init)
+      this.state.version.value += 1
   },
   add(id, page, input) {
    //console.log("add",id,page,input) 
