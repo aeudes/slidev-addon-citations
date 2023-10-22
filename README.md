@@ -4,8 +4,9 @@ Add bibliography and citation features for Slidev
 PowerBy <img alt="Citation.js" src="https://citation.js.org/favicon.png"  width="25" height="25" />[citation-js](https://citation.js.org)
 
 
-The addon allows Json and Bibtex input bibliography by default.
-An example is provided in this repository (see citations-addon-exemple.md)
+The addon allows Json and Bibtex input bibliography by default.   
+An example is provided in this repository (see example.md)   
+A running view of example.md is here : [example.md](https://aeudes.github.io/slidev-addon-citations)
 
 # Install   
 You only need to add "slidev-addon-citations" in the addon section of the frontmatter of your presentation and ```npm install slidev-addon-citations``` to your project.
@@ -157,5 +158,6 @@ export default defineAppSetup(({ app, router }) => {
 - [ ] change from preparser to parser to avoid problem with online editor
 - [x] provide entry point to load custom csl format without need to write extension
 - [ ] allows to download the bibliography
+- [ ] citation-js extra plugin loading with global install
 
 

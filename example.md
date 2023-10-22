@@ -19,7 +19,7 @@ biblio:
  #template: harvard1
  csl_template_file: style.json # for ieee
  template: ieee
- #numerical_ref: false
+ #numerical_ref: true
 ---
 
 # Bibliography addon for slidev
