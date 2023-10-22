@@ -124,20 +124,26 @@ export const citation_state =
     this.state.version.value += 1
     return this.state.cite
   },
-  update_full_bib(){ 
+  update_full_bib(){
     if (!this.state.cite)
       return
     
     this.state.bib_other = {}
     // update full bib
     const bib_ids = this.state.cite.getIds()
-    let bib_id_order = {}
-    Object.keys(this.state.bibprop).forEach(k => {let idx = bib_ids.indexOf(k); if (idx!=-1) {bib_id_order[k] = idx} })
-    const nknow = Object.keys(bib_id_order).length
-    if ( this.state.process_all)
-      bib_ids.forEach( (k,i) => { if (!(k in bib_id_order)) {bib_id_order[k] = i} })
+    let bib_id_order = []
+    bib_ids.forEach((k,bidx) => {
+      let v = this.state.bibprop?.[k] ?? {'pages': [0], 'idx': 1e30};
+      let order = Number(v.pages[0])*(this.state.nitem+10) + v.idx
+      bib_id_order.push({'id': k, 'bidx': bidx,'order': order}) 
+    })
+    bib_id_order.sort((a,b) => a.order - b.order)
     
-    let biblios = this.state.cite.format('bibliography',{ entry: Object.keys(bib_id_order), 
+    let nknow =  bib_id_order.findIndex(a => a.order == 1e30)
+    if ( !this.state.process_all)
+      bib_id_order.splice(nknow)
+    
+    let biblios = this.state.cite.format('bibliography',{ entry: bib_id_order.map(u => u.id), 
       template: this.state.config.template,
       lang:  this.state.config.locale,
       asEntryArray: true,
@@ -147,25 +153,27 @@ export const citation_state =
 
     this.state.biborder_full = biblios.map( x => x[0] )
     this.state.biborder = this.state.biborder_full.filter(x => x in this.state.bibprop )
-    Object.entries(bib_id_order).forEach( ([id,v],i) => 
+    bib_id_order.forEach( (order,i) => 
     {
+      const id = order.id
+      const bidx = order.bidx
       const bib = mbiblios[id]
-      let x = this.state.cite.data[v] //bib_id_order[id]]
+      let x = this.state.cite.data[bidx]
       const etal = (x.author.length <= 1 )? "" : " et al."
       const short_bib = x.author[0].given[0] + ". " + x.author[0].family + etal +" , " + x.title
       
       if (i < nknow)
       {
-         this.state.bibprop[id]["full_bib"] = bib //biblios[i][1]
+         this.state.bibprop[id]["full_bib"] = bib
          this.state.bibprop[id]["short_bib"] = short_bib
          this.state.bibprop[id]["id"] = id
          if (this.state.config.numerical_ref){
-           this.state.bibprop[id]["cite_id"] = "["+this.state.bibprop[id].idx+"]"
+           this.state.bibprop[id]["cite_id"] = "["+i+"]"
          }else {
 	         this.state.bibprop[id]["cite_id"] = this.state.cite.format("citation",
 		       { entry: id
 	         , template: this.state.config.template
-	         , citationsPre: Object.keys(bib_id_order).slice(0,i) } 
+           , citationsPre: bib_id_order.slice(0,i).map( x => x.id) } 
 	       )}
       }
       else {
@@ -173,7 +181,8 @@ export const citation_state =
       }
     })
   },
-  add(id, page, input){
+  add(id, page, input) {
+   //console.log("add",id,page,input) 
    if (id == null) {
      if (input != null)
      {
@@ -182,19 +191,37 @@ export const citation_state =
     else{return null}
    }
    
-   if (!(id in this.state.bibprop))
+   let changed = false
+   let prop = this.state.bibprop?.[id]
+   if (prop == undefined)
    {
-    this.state.bibprop[id] = {"pages": [], "idx": this.state.nitem}
-    this.state.nitem += 1
-    if (input != null)
+     this.state.bibprop[id] = {"pages": [page], "idx": this.state.nitem}
+     prop = this.state.bibprop[id]
+     changed = true
+   }
+   
+   if (input != null && prop?.id == undefined){
       this.add_input(input, id)
-    this.update_full_bib() // TODO only update id
+      changed = true
    }
-
-   if ( page && !(this.state.bibprop[id].pages.includes(page)))
-   {
-     this.state.bibprop[id].pages.push(page)
+   if ( page && !(prop.pages.includes(page)))
+   { // TODO sorted insert ?
+       if (prop.pages.length == 0 || prop.pages[0] < page  ){
+           prop.pages.push(page)
+       }
+       else {
+           prop.pages.push(prop.pages[0])
+           prop.pages[0] = page
+           prop.idx = this.state.nitem
+           changed = true
+       }
    }
+   
+   this.state.nitem += 1
+   if (changed) {
+     this.update_full_bib() // TODO only update id
+   }
+   
    return id
   },
   process_all()
