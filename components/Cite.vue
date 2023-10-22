@@ -55,6 +55,7 @@ function update_bib()
     {
       refnum.value =  my_bib_data.cite_id
       reftext.value = my_bib_data.full_bib
+      show_tooltips.value = bibSlideConfig.tooltips
     }
   
     let idx_id = citation_state.get_allbibinpage(my_page)
