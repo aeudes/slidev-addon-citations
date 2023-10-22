@@ -17,7 +17,7 @@ biblio:
  #template: vancouver
  #template: apa
  #template: harvard1
- csl_template_file: style.json
+ csl_template_file: style.json # for ieee
  template: ieee
  #numerical_ref: false
 ---
@@ -110,6 +110,6 @@ layout: biblio
 biblio:
   item_per_page: 4
   show_full_bib: true
-  #show_id: true
+  #show_id: false
 ---
 # Full Biblio (even not cited items)!
