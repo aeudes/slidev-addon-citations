@@ -8,7 +8,7 @@ const props = defineProps({
 <template>
 	<div class="slidev-layout biblio">
            <slot>
-	   <h1 class="text-center" >Biblography</h1>
+	   <h1 class="text-center" >Bibliography</h1>
 	   </slot>
 	   <BiblioList />
 	</div>
