@@ -68,7 +68,7 @@ citation_state.init().then( (cite) =>
              </template>)
           </span>
        </li>
-       <p>page  {{index+1}} / {{biblio.length}} </p>
+       <p v-if="biblio.length > 1">page  {{index+1}} / {{biblio.length}} </p>
      </ul>
      </template>
      <!-- hack to have correct number of click -->
