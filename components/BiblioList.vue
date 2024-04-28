@@ -63,12 +63,12 @@ citation_state.init().then( (cite) =>
           <span class="biblio_id" v-if="showid">[{{elm.id}}] </span>
           <span class="biblio_fullref">{{elm.full_bib}}</span>
           <span class="biblio_pageref" v-if="elm.pages?.length" >
-            (<template v-for="page in elm.pages">
-               <Link :to="page" >{{page}}</Link>
+            (<template v-for="(page, index) in elm.pages">
+               <template v-if="index != 0">,&nbsp;</template><Link :to="page" >{{page}}</Link>
              </template>)
           </span>
        </li>
-       <p>page  {{index+1}} / {{biblio.length}} </p>
+       <p v-if="biblio.length > 1">page  {{index+1}} / {{biblio.length}} </p>
      </ul>
      </template>
      <!-- hack to have correct number of click -->
