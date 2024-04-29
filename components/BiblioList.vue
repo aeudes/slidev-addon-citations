@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import { ref, inject, watch } from 'vue'
 import {citation_state} from "./CiteEngine"
-import sliconfig from "/@slidev/configs"
-import {injectionRoute } from "@slidev/client/constants.ts"
+import { useSlideContext } from '@slidev/client'
+const { $slidev , $route, $frontmatter} = useSlideContext()
+
+const my_page = $route.no 
 
 const props = defineProps({
    showFullBib:{type: Boolean, default:  false},
    itemPerPage: {type: Number, default:  undefined},
 });
 
-const slidevRoute = inject(injectionRoute)
-const my_page =slidevRoute.path
-const frontmatter = slidevRoute.meta.slide.frontmatter
-
 const biblio = ref([])
 
-let bibSlideConfig = {... citation_state.default_config, ... sliconfig?.biblio, ...frontmatter?.biblio}
+let bibSlideConfig = {... citation_state.default_config, ... $slidev.configs?.biblio, ...$frontmatter?.biblio}
 const maxItem = props.itemPerPage ?? bibSlideConfig.item_per_page
 const fullBib = props.showFullBib || bibSlideConfig.show_full_bib
 const showid  = bibSlideConfig.show_id || (fullBib || bibSlideConfig.numerical_ref) && (bibSlideConfig.show_id ?? true) 

@@ -9,7 +9,7 @@
     "screenshot": "slidev export example.md --format png"
   },
   "engines": {
-    "slidev": ">0.42.11"
+    "slidev": ">=0.48.0"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "devDependencies": {
     "@iconify-json/mingcute": "^1.1.9",
-    "@slidev/cli": ">=0.42.11",
+    "@slidev/cli": ">=0.48.0",
     "@slidev/theme-seriph": "^0.21.3",
     "playwright-chromium": "^1.38.0"
   },
@@ -36,8 +36,8 @@
     "@citation-js/plugin-bibtex": ">=0.6.8",
     "@citation-js/plugin-csl": ">=0.6.8",
     "@citation-js/plugin-doi": ">=0.6.8",
-    "@slidev/cli": ">=0.42.11",
-    "@slidev/types": ">=0.42.11",
+    "@slidev/cli": ">=0.48.0",
+    "@slidev/types": ">=0.48.0",
     "vite": ">=4.4.0"
   },
   "type": "module"

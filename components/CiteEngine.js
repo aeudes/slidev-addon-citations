@@ -6,7 +6,6 @@ import "@citation-js/plugin-csl"
 import "@citation-js/plugin-doi"
 import sliconfig from "/@slidev/configs"
 
-
 export const citation_state = 
 {
    default_config:

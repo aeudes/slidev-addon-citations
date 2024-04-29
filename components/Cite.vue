@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import { ref, inject, watch } from 'vue'
 import {citation_state} from "./CiteEngine"
-import sliconfig from "/@slidev/configs"
-import {injectionRoute } from "@slidev/client/constants.ts"
+import { useSlideContext } from '@slidev/client'
+const { $slidev , $route, $frontmatter} = useSlideContext()
+
+const my_page = $route.no
 
 const props = defineProps({
    bref:{type: String, default: null},
    input:{type: String, default: null},
 });
 
-const slidevRoute = inject(injectionRoute)
-const my_page =slidevRoute.path
-const frontmatter = slidevRoute.meta.slide.frontmatter
-
 const reftext = ref("")
 const refnum = ref("")
 const footpage_bib = ref("")
 
-let bibSlideConfig = {... citation_state.default_config, ... sliconfig?.biblio, ...frontmatter?.biblio}
+let bibSlideConfig = {... citation_state.default_config, ... $slidev.configs?.biblio, ...$frontmatter?.biblio}
 const show_tooltips = ref(bibSlideConfig.tooltips)
 const footpage_bibtype = get_footpage_type()
 const show_id = bibSlideConfig.show_id || (footpage_bibtype ==="short" || bibSlideConfig.numerical_ref) && (bibSlideConfig.show_id ?? true)
