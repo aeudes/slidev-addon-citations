@@ -30,7 +30,9 @@ jobs:
         run: npm install
 
       - name: Install slidev
-        run:  npm i -g @slidev/cli
+        run: | 
+             npm i -g @slidev/cli
+             npm i -g @iconify-json/mingcute
 
       - name: Build
         run: slidev build example.md --base /slidev-addon-citations/
