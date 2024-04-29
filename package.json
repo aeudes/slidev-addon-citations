@@ -1,6 +1,6 @@
 {
   "name": "slidev-addon-citations",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "add citations and biliography to slidev using citation.js",
   "scripts": {
     "dev": "slidev example.md",
