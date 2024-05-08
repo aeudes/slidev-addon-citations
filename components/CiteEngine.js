@@ -143,6 +143,8 @@ export const citation_state =
     bib_id_order.sort((a,b) => a.order - b.order)
     
     let nknow =  bib_id_order.findIndex(a => a.order == 1e30)
+    if ( nknow == -1 )
+      nknow = bib_id_order.length
     if ( !this.state.process_all)
       bib_id_order.splice(nknow)
     
